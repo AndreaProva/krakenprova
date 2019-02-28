@@ -1,0 +1,411 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DistributoreImpl {
+	int n = 10;
+	ArrayList<Bibite>[] al = new ArrayList[n];
+	private String user;
+	private String password = "tavernello";
+	Cliente c = new Cliente();
+	Scanner s = new Scanner(System.in);
+
+	public DistributoreImpl() {
+		int i, j;
+		for (i = 0; i < n; i = i + 1) {
+			al[i] = new ArrayList<Bibite>();
+			for (j = 0; j < n; j++) {
+				if (i == 0) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "coca";
+					al[i].add(bibita);
+				}
+				if (i == 1) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "coca";
+					al[i].add(bibita);
+				}
+				if (i == 2) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "fanta";
+					al[i].add(bibita);
+				}
+				if (i == 3) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "fanta";
+					al[i].add(bibita);
+				}
+				if (i == 4) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "the";
+					al[i].add(bibita);
+				}
+				if (i == 5) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "the";
+					al[i].add(bibita);
+				}
+				if (i == 6) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "acqua";
+					al[i].add(bibita);
+				}
+				if (i == 7) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "acqua";
+					al[i].add(bibita);
+				}
+				if (i == 8) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "tavernello";
+					al[i].add(bibita);
+				}
+				if (i == 9) {
+					Bibite bibita = new Bibite();
+					bibita.tipo = "tavernello";
+					al[i].add(bibita);
+				}
+			}
+		}
+	}
+
+	public int check() {
+		int b = 2;
+		String tipoUtente;
+
+		System.out.println("che utente sei? tecnico o cliente?");
+		tipoUtente = s.nextLine();
+
+		if (tipoUtente.equals("cliente")) {
+			b = 0;
+		} else if (tipoUtente.equals("tecnico")) {
+			b = 1;
+		}
+
+		return b;
+	}
+
+	public int domanda() {
+		int ritorno=2;
+		System.out.println("inserire soldi nella chiavetta o coprare una bibita?");
+		System.out.println("scrivere 'soldi' oppure 'compra'");
+		String scelta=s.nextLine();
+		if(scelta.equalsIgnoreCase("soldi")) {
+			ritorno=1;
+		}
+		if(scelta.equalsIgnoreCase("compra")) {
+			ritorno=0;
+		}
+		if(ritorno==2)
+			domanda();
+		return ritorno;
+	}
+
+	public boolean richiediPassword() {
+		boolean b = false;
+
+		System.out.println("Inserisci la password:");
+		String input = s.nextLine();
+		if (input.equals(password)) {
+			b = true;
+		}
+		return b;
+	}
+
+	public void seleziona() {
+
+		System.out.println("Scegli la bibita. Digitare uno dei seguenti numeri:");
+		System.out.println("codice 0/1)coca cola, costo 1.50€");
+		System.out.println("codice 2/3)fanta, costo 1.40€");
+		System.out.println("codice 4/5)the, costo 1.30€");
+		System.out.println("codice 6/7)acqua, costo 1.00€");
+		System.out.println("codice 8/9)tavernello, costo 2.50€");
+		int i = s.nextInt();
+
+		if (i == 0) {
+			if (c.getCredito() >= 1.50) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.50);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+
+		if (i == 1) {
+			if (c.getCredito() >= 1.50) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.50);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 2) {
+			if (c.getCredito() >= 1.40) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.40);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 3) {
+			if (c.getCredito() >= 1.40) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.40);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 4) {
+			if (c.getCredito() >= 1.30) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.30);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 5) {
+			if (c.getCredito() >= 1.30) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.30);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 6) {
+			if (c.getCredito() >= 1.00) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.00);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 7) {
+			if (c.getCredito() >= 1.00) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(1.00);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 8) {
+			if (c.getCredito() >= 2.50) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(2.50);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+		}
+		if (i == 9) {
+			if (c.getCredito() >= 2.50) {
+				Bibite w = al[i].get(9);
+				if (w.tipo != null) {
+					al[i].remove(9);
+					Bibite bibita = new Bibite();
+					bibita.tipo = null;
+					al[i].add(0, bibita);
+					c.setCredito(2.50);
+				} else {
+					System.out.println("bibite esaurite");
+				}
+			} else
+				System.out.println("credito insufficente");
+
+		}
+	}
+
+	public void print() {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print(al[j].get(i).tipo + "  ");
+			}
+			System.out.println("");
+		}
+	}
+
+	public int[] quantoVuoto() {
+		int[] vuoto = new int[10];
+		for (int i = 0; i < n; i = i + 1) {
+			for (int j = 0; j < n; j++) {
+				Bibite b = new Bibite();
+				b = al[i].get(j);
+				if (b.tipo == null)
+					vuoto[i] += 1;
+
+			}
+		}
+		for (int i = 0; i < n; i = i + 1) {
+			System.out.println(vuoto[i]);
+		}
+		return vuoto;
+	}
+
+	public void rifornisci() {
+		int j;
+		int[] v = quantoVuoto();
+		for (int i = 0; i < 10; i++) {
+			int x = v[i];
+			if (x > 0) {
+				for (j = 0; j <= x; j++) {
+
+					al[i].remove(j);
+					if (i == 0) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "coca";
+						al[i].add(j, bibita);
+					}
+					if (i == 1) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "coca";
+						al[i].add(j, bibita);
+					}
+					if (i == 2) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "fanta";
+						al[i].add(j, bibita);
+					}
+					if (i == 3) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "fanta";
+						al[i].add(j, bibita);
+					}
+					if (i == 4) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "the";
+						al[i].add(j, bibita);
+					}
+					if (i == 5) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "the";
+						al[i].add(j, bibita);
+					}
+					if (i == 6) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "acqua";
+						al[i].add(j, bibita);
+					}
+					if (i == 7) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "acqua";
+						al[i].add(j, bibita);
+					}
+					if (i == 8) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "tavernello";
+						al[i].add(j, bibita);
+					}
+					if (i == 9) {
+						Bibite bibita = new Bibite();
+						bibita.tipo = "tavernello";
+						al[i].add(j, bibita);
+					}
+				}
+			}
+		}
+	}
+
+	public void exit() {
+		System.exit(0);
+	}
+	public boolean richiestaPsd() {
+		boolean a=false;
+		while(richiediPassword()){
+			a=true;
+			System.out.println("caricamento macchinette in corso....");
+			rifornisci();
+			print();
+			System.out.println("vuoi uscire o ritornare alla schermata iniziale?");
+			System.out.println("scrivere 'uscire' o 'inizio'");
+			String temp=s.nextLine();
+			if(temp.equalsIgnoreCase("uscire"))
+				exit();
+			if(temp.equalsIgnoreCase("inizio"))
+				controllo();
+			}
+		return a;
+	}
+	
+	public int controllo() {
+		int verifica = check();
+		if (verifica == 2) {
+			controllo();
+		}
+		if (verifica == 1) {
+			while(!richiestaPsd())
+				richiestaPsd();
+		}
+		if (verifica == 0) {
+			if (domanda() == 0) {
+				seleziona();
+				print();
+			}else {
+				c.caricaChiavetta();
+			}
+		}
+
+		return verifica;
+	}
+	
+}
